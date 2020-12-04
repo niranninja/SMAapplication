@@ -28,14 +28,14 @@ public class LoginFrame extends JFrame{
 				Employee emp=empController.checkLogin(UserId, Password);
 				if(emp==null) {
 					
-				emp.getActive().equals("Active")) {
+				emp.getActive().equals("Active") {
 					if(emp.getRole().equals("HRA")) {
 						new HRAHome();
-					}
-					else if(emp.getRole().equals("PME")) {
+				}
+				else if(emp.getRole().equals("PME")) {
 						new PMEHome();
-					}
-					else {
+				}
+				  else {
 						new EMPHome(emp);
 					}
 				}
@@ -65,7 +65,7 @@ public class LoginFrame extends JFrame{
 	}
 	public void setLayoutManager() {
 		container.setLayout(null);
-	}
+		}
 	public void setLocationAndSize() {
 		lUserId.setBounds(50, 150, 100, 30);
 		lpassword.setBounds(50, 250, 100, 30);
