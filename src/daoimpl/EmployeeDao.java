@@ -71,26 +71,89 @@ public EmployeeDao() throws ClassNotFoundException, SQLException {
 	}	
 	@Override
 	public Employee getEmployeeById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Employee emp=new Employee();
+		try {
+			PreparedStatement pst=conn.prepareStatement("Select * from Employee where empId=?");
+			pst.setInt(1, id);
+			ResultSet rst=pst.executeQuery();
+			if(rst!=null) {
+				emp.setEmpId(rst.getInt(1));
+				emp.setFirstName(rst.getString(2));
+				emp.setLastName(rst.getString(3));
+				emp.setUserId(rst.getString(4));
+				emp.setPassword(rst.getString(5));
+				emp.setRole(rst.getString(6));
+				emp.setGender(rst.getString(7));
+				emp.setActive(rst.getString(8));
+			}
+		}
+		catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+		return emp;
 	}
 
 	@Override
 	public void updateEmployee(Employee emp) {
-		// TODO Auto-generated method stub
+		
+		try {
+		PreparedStatement pst=conn.prepareStatement("update Employee set Password=? where empId=?");
+		pst.setString(1, emp.getFirstName());
+		pst.setString(2, emp.getLastName());
+		pst.setString(3, emp.getPassword());
+		pst.setInt(4, emp.getEmpId());
+		int i=pst.executeUpdate();
+		if(i==1) {
+			System.out.println("1 Record Updated...");
+		}
+		else {
+			System.out.println("Record Updation Failed...");
+			}
+		}
+		catch(SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
 		
 	}
 
 	@Override
-	public void deactivateEmployee(int id) {
-		// TODO Auto-generated method stub
+	public void deactivateEmployee(Employee emp) {
 		
+		try {
+		PreparedStatement pst=conn.prepareStatement("update Employee set Active=? where empId=?");
+				pst.setString(1, "Deactive");
+				pst.setInt(2, emp.getEmpId());
+				int i=pst.executeUpdate();
+				if(i==1) {
+					System.out.println("Your Employee Deactivated... ");
+				}
+				else {
+					System.out.println("Record Updation Failed...");
+				}
+		}
+				catch(SQLException ex) {
+					System.out.println(ex.getMessage());
+				}
+				
 	}
 
 	@Override
 	public void deleteEmployee(int id) {
-		// TODO Auto-generated method stub
 		
+		try {
+			PreparedStatement pst=conn.prepareStatement("delete from Employee where empId=?");
+			pst.setInt(1, id);
+			int i=pst.executeUpdate();
+			if(i==1) {
+				System.out.println("Employee Deleted...");
+			}
+			else {
+				System.out.println("Deletion Failed...");
+			}
+		}
+			catch(SQLException ex){
+				System.out.println(ex.getMessage());
+				
+			}
+		}
 	}
-
-}
