@@ -14,7 +14,7 @@ public class EmpIdFrame extends JFrame{
 	JTextField tEmployeeId;
 	JButton bSubmit;
 	Employeecontroller empController=null;
-	//public Object tEmployeeId;
+
 	
 	public EmpIdFrame() throws ClassNotFoundException, SQLException{
 		container=getContentPane();
@@ -29,11 +29,9 @@ public class EmpIdFrame extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//pController.getEmployeeById(s);
 				try {
 					new SelectEmpDataFrame();
 				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

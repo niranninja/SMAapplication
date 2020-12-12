@@ -33,7 +33,11 @@ public class PMEHome extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					new AllSkillFrame();
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}
 				
 			}	
 		});
@@ -47,10 +51,8 @@ public class PMEHome extends JFrame {
 				try {
 					new AddJobFrame();
 				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}	
@@ -61,7 +63,11 @@ public class PMEHome extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					new AllJobsFrame();
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}	
 				
 			}	
 		});
@@ -81,8 +87,11 @@ public class PMEHome extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				try {
+					new AppliedJobsFrame();
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}
 			}	
 		});
 		
@@ -91,7 +100,11 @@ public class PMEHome extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+				try {
+					new DeactivateJobFrame();
+				} catch (ClassNotFoundException | SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -103,7 +116,7 @@ public class PMEHome extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				Logout();	
 			}	
 		});
 		
@@ -120,6 +133,9 @@ public class PMEHome extends JFrame {
 	private void addComponentsToContainer() {
 		container.setLayout(null);
 		
+	}
+	public void Logout(){
+		this.dispose();
 	}
 
 	private void setLocationAndSize() {
